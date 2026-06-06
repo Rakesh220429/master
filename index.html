@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Landing Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      overflow-x: hidden; /* fixed */
+      background: linear-gradient(-45deg, #ff6a00, #ee0979, #00c6ff, #0072ff);
+      background-size: 400% 400%;
+      animation: gradientBG 12s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+      z-index: 1;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-size: 50px;
+      margin-bottom: 20px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+
+    .btn {
+      padding: 12px 30px;
+      border: none;
+      border-radius: 30px;
+      background: #fff;
+      color: #333;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    .circles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    .circles span {
+      position: absolute;
+      display: block;
+      background: rgba(255,255,255,0.2);
+      animation: animate 25s linear infinite;
+      bottom: -150px;
+      border-radius: 50%;
+    }
+
+    .circles span:nth-child(1) { left: 25%; width: 80px; height: 80px; animation-delay: 0s; }
+    .circles span:nth-child(2) { left: 10%; width: 20px; height: 20px; animation-delay: 2s; }
+    .circles span:nth-child(3) { left: 70%; width: 20px; height: 20px; animation-delay: 4s; }
+    .circles span:nth-child(4) { left: 40%; width: 60px; height: 60px; animation-delay: 0s; }
+    .circles span:nth-child(5) { left: 65%; width: 20px; height: 20px; animation-delay: 0s; }
+
+    @keyframes animate {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+      }
+      100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+      }
+    }
+
+    /* ✅ Footer styling */
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 14px;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>✨ Welcome</h1>
+
+    <p>Hosted on
+      <svg width="100" height="70" viewBox="0 0 400 240" xmlns="http://www.w3.org/2000/svg">
+        <g fill="#ffffff">
+          <path d="M88.7 147.5c-24.4 17.9-59.9 27.4-90.4 27.4-42.8 0-81.3-15.8-110.4-42.1-2.3-2.1-.2-5 2.5-3.4 31.4 18.3 70.2 29.3 110.3 29.3 27.1 0 56.9-5.6 84.3-17.2 4.1-1.8 7.5 2.7 3.7 6z" transform="scale(1.5) translate(80,-20)"/>
+          <path d="M102.6 131.6c-3.1-4-20.5-1.9-28.3-.9-2.4.3-2.8-1.8-.6-3.3 14.1-9.9 37.3-7.1 40-3.5 2.7 3.7-.7 26.9-14 38.1-2.1 1.7-4.1.8-3.2-1.5 3-7.5 9.8-24.3 6.1-28.9z" transform="scale(1.5) translate(80,-20)"/>
+        </g>
+      </svg> 🚀
+    </p>
+
+    <button class="btn">Explore</button>
+  </div>
+
+  <div class="circles">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- ✅ Footer -->
+  <footer>
+    <p>&copy; <span id="year"></span> Rakesh Ramaraju. All rights reserved.</p>
+  </footer>
+
+  <!-- ✅ Script -->
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
